@@ -19,7 +19,7 @@ function runOnScroll() {
 const images = document.querySelectorAll("img");
 
 images.forEach(image => image.addEventListener("mouseover", grayscale));
-imges.forEach(image => image.addEventListener("mouseout", resetColor));
+images.forEach(image => image.addEventListener("mouseout", resetColor));
 
 // Callbacks
 function grayscale (event) {
@@ -47,3 +47,33 @@ images.forEach(image => {
 function doFilter(event, filter) {
     event.target.style.filter = filter;
 } */
+
+/* On keypress, change the background color randomly from an array of colors */
+// BEWARE EPILEPTIC PEOPLE /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
+
+const colors = [
+    "#5D8AA8",
+    "#F0F8FF",
+    "#E32636",
+    "#EFDECD",
+    "#E52B50",
+    "#FFBF00",
+    "#FF033E",
+    "#9966CC",
+    "#A4C639",
+    "#F2F3F4",
+    "#CD9575",
+    "#915C83",
+    "#FAEBD7",
+    "#008000",
+    "#8DB600"
+];
+
+const body = document.querySelector("body").addEventListener("keydown", backgroundRandColor);
+
+function backgroundRandColor (event) {
+    let color = colors[Math.floor(Math.random() * colors.length)];
+
+    event.target.style.backgroundColor = color;
+
+}
