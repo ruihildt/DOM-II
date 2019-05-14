@@ -84,7 +84,7 @@ const contentPick = document.querySelector(".content-pick");
 const destinations = document.querySelectorAll(".destination");
 const buttons = document.querySelectorAll(".btn");
 
-// Callback
+/* // Callback
 function changeBgColor(event, bgcolor) {
     event.target.style.backgroundColor = bgcolor;
 }
@@ -106,10 +106,21 @@ destinations.forEach(destination => {
 
 contentPick.addEventListener(
     "click",
-    event => changeBgColor(event, "blue"),
+    event => event.stopPropagation()
 );
 
 container.addEventListener(
     "click",
     event => changeBgColor(event, "purple"),
 );
+ */
+
+// 
+
+
+/// Stop the navigation from items from refreshing the page
+const navLinks = document.querySelectorAll("a.nav-link");
+
+navLinks.forEach(link => link.addEventListener('click', evt => {
+    evt.preventDefault();
+}));
