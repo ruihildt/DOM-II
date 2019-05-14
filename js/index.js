@@ -1,4 +1,4 @@
-/* Changing the height of nav when scrolling down more than 230px */
+/// Changing the height of nav when scrolling down more than 230px
 //Storing the queryselection in nav
 const nav = document.querySelector(".main-navigation");
 
@@ -15,7 +15,7 @@ function runOnScroll() {
     }
 };
 
-/* On hover, change image to black and white */
+/// On hover, change image to black and white
 const images = document.querySelectorAll("img");
 
 images.forEach(image => image.addEventListener("mouseover", grayscale));
@@ -31,25 +31,25 @@ function resetColor(event) {
 
 // Cabrejas refactor
 
-/* const images = document.querySelectorAll("img");
+// const images = document.querySelectorAll("img");
+//
+//images.forEach(image => {
+//    image.addEventListener(
+//        "mouseover",
+//        evt => doFilter(evt, "grayscale(100%)")
+//    );
+//    image.addEventListener(
+//        "mouseout",
+//        evt => doFilter(evt, "inherit")
+//    );
+//});
+//
+//function doFilter(event, filter) {
+//    event.target.style.filter = filter;
+//}
 
-images.forEach(image => {
-    image.addEventListener(
-        "mouseover",
-        evt => doFilter(evt, "grayscale(100%)")
-    );
-    image.addEventListener(
-        "mouseout",
-        evt => doFilter(evt, "inherit")
-    );
-});
-
-function doFilter(event, filter) {
-    event.target.style.filter = filter;
-} */
-
-/* On keypress, change the background color randomly from an array of colors */
-// BEWARE EPILEPTIC PEOPLE /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
+/// On keypress, change the background color randomly from an array of colors
+/// BEWARE EPILEPTIC PEOPLE /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 
 const colors = [
     "#5D8AA8",
@@ -68,12 +68,48 @@ const colors = [
     "#008000",
     "#8DB600"
 ];
+let color = colors[Math.floor(Math.random() * colors.length)];
 
-const body = document.querySelector("body").addEventListener("keydown", backgroundRandColor);
+const body = document.querySelector("body");
+body.addEventListener("keydown", backgroundRandColor);
 
 function backgroundRandColor (event) {
-    let color = colors[Math.floor(Math.random() * colors.length)];
-
     event.target.style.backgroundColor = color;
-
 }
+
+
+/// On clicking sign up, have all parents of `.btn` turn to different colors, except body
+const container = document.querySelector(".container");
+const contentPick = document.querySelector(".content-pick");
+const destinations = document.querySelectorAll(".destination");
+const buttons = document.querySelectorAll(".btn");
+
+// Callback
+function changeBgColor(event, bgcolor) {
+    event.target.style.backgroundColor = bgcolor;
+}
+
+// Events
+buttons.forEach(button => {
+    button.addEventListener(
+        "click",
+        event => changeBgColor(event, "red"),
+    );
+});
+
+destinations.forEach(destination => {
+    destination.addEventListener(
+        "click",
+        event => changeBgColor(event, "green"),
+    );
+});
+
+contentPick.addEventListener(
+    "click",
+    event => changeBgColor(event, "blue"),
+);
+
+container.addEventListener(
+    "click",
+    event => changeBgColor(event, "purple"),
+);
