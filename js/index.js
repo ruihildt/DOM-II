@@ -1,4 +1,4 @@
-/// Changing the height of nav when scrolling down more than 230px
+/* /// Changing the height of nav when scrolling down more than 230px
 //Storing the queryselection in nav
 const nav = document.querySelector(".main-navigation");
 
@@ -76,47 +76,45 @@ body.addEventListener("keydown", backgroundRandColor);
 function backgroundRandColor (event) {
     event.target.style.backgroundColor = color;
 }
+ */
 
-
-/// On clicking sign up, have all parents of `.btn` turn to different colors, except body
-const container = document.querySelector(".container");
+/// On clicking sign up, have all parents of `.btn` turn to different colors 
+const body = document.querySelector("body");
 const contentPick = document.querySelector(".content-pick");
 const destinations = document.querySelectorAll(".destination");
 const buttons = document.querySelectorAll(".btn");
 
-/* // Callback
-function changeBgColor(event, bgcolor) {
-    event.target.style.backgroundColor = bgcolor;
-}
-
-// Events
+//Event Listeners
 buttons.forEach(button => {
     button.addEventListener(
         "click",
-        event => changeBgColor(event, "red"),
-    );
+        event => borderStyle(event, "2px solid red"),
+    )
 });
 
 destinations.forEach(destination => {
     destination.addEventListener(
         "click",
-        event => changeBgColor(event, "green"),
-    );
-});
+        event => borderStyle(event, "2px solid pink")
+        ),
+        event.stopPropagation()
+    });
 
 contentPick.addEventListener(
     "click",
-    event => event.stopPropagation()
-);
+    event => borderStyle(event, "2px solid green")
+    )
 
-container.addEventListener(
+body.addEventListener(
     "click",
-    event => changeBgColor(event, "purple"),
-);
- */
+    event => borderStyle(event, "2px solid grey"),
+)
 
-// 
 
+// Callback
+function borderStyle(event, border) {
+    event.target.style.border = border;
+}
 
 /// Stop the navigation from items from refreshing the page
 const navLinks = document.querySelectorAll("a.nav-link");
